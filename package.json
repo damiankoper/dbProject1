@@ -1,0 +1,29 @@
+{
+  "name": "dbproject1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/damiankoper/dbProject1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/damiankoper/dbProject1/issues"
+  },
+  "homepage": "https://github.com/damiankoper/dbProject1#readme",
+  "dependencies": {
+    "color": "^3.1.0",
+    "dotenv": "^7.0.0",
+    "faker": "^4.1.0",
+    "moment": "^2.24.0",
+    "mysql2": "^1.6.5"
+  }
+}
