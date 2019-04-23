@@ -72,7 +72,7 @@ const connection = mysql.createConnection({
 /**
  * Seed users
  */
-let hh = 0;
+/* let hh = 0;
 for (let i = 0; i < 10; i++) {
   connection.query(
     'INSERT INTO users (household_id, firstname, surname, color, birthdate) values(?,?,?,?,?)',
@@ -91,3 +91,35 @@ for (let i = 0; i < 10; i++) {
           ])
     })
 }
+ */
+
+/**
+ * Seed products
+ */
+
+connection.query('select id from users', [], (err, userID) => {
+  userID = userID.map(id => id.id)
+  connection.query('select id from shopping_categories', [], (err, categoryID) => {
+    categoryID = categoryID.map(id => id.id)
+    connection.query('select id from shopping_shops', [], (err, shopID) => {
+      shopID = shopID.map(id => id.id)
+      Array(1000).fill(0).forEach(() => {
+        connection.query(
+          `INSERT INTO shopping_items (household_id, user_id, shopping_category_id, shopping_shop_id, 
+         name, price, discount_on_unit, quantity, shared, date) values(?,?,?,?,?,?,?,?,?,?)`,
+          [
+            getRandomArbitrary(1, 4),
+            userID[parseInt(getRandomArbitrary(0, userID.length - 1))],
+            categoryID[parseInt(getRandomArbitrary(0, categoryID.length - 1))],
+            shopID[parseInt(getRandomArbitrary(0, shopID.length - 1))],
+            faker.commerce.productName(),
+            faker.commerce.price(),
+            0,
+            parseInt(getRandomArbitrary(1, 10)),
+            Math.round((Math.random() * 1) + 0) === 0,
+            moment(faker.date.between(moment().subtract(3, 'months'), moment())).format()
+          ])
+      })
+    })
+  })
+})
