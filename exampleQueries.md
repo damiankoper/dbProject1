@@ -76,6 +76,8 @@ VALUES (
 ```
 
 ## Inne
+
+### Statystyki list zakupów:
 ```sql
 SELECT 
     households.name AS "Nazwa gospodarstwa"
@@ -91,6 +93,7 @@ GROUP BY
     households.name;
 ```
 
+### Statystyki ogólne dla gospodarstwa:
 ```sql
 SET @_from = '2019-01-01';
 SET @_to = '2019-05-01';
