@@ -101,7 +101,9 @@ SELECT
     COUNT(DISTINCT shopping_lists.id) AS "Listy zakupów", 
     COUNT(DISTINCT shopping_items.id) AS "Wprowadzone produkty", 
     ROUND(
-        SUM(shopping_items.price*shopping_items.quantity - shopping_items.discount_on_unit * shopping_items.quantity), 2) AS "Wartość zakupów" 
+        SUM(
+            shopping_items.price*shopping_items.quantity - shopping_items.discount_on_unit * shopping_items.quantity),
+        2) AS "Wartość zakupów" 
 FROM households 
 LEFT JOIN users 
     ON users.household_id = households.id
