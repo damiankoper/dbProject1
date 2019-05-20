@@ -1,3 +1,7 @@
+/**
+ * Prosty seeder, ale dał radę
+ */
+
 const mysql = require('mysql2')
 const moment = require('moment')
 const faker = require('faker')
